@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Peace Logistix</title>
+    <link rel="stylesheet" href="../assets/css/toasted.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -82,7 +83,8 @@
                 </button>
             </form>
         </div>
-
+        <script src="../assets/js/ajax.js"></script>
+        <script src="../assets/js/toasted.js"></script>
         <script>
             // Toggle password visibility
             document.getElementById('togglePassword').addEventListener('click', function() {
@@ -104,18 +106,30 @@
             document.getElementById('loginForm').addEventListener('submit', function(e) {
                 e.preventDefault();
 
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
                 // Add loading state
                 const submitBtn = this.querySelector('.custom-button');
                 const originalText = submitBtn.innerHTML;
                 submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Signing in...';
                 submitBtn.disabled = true;
 
-                // Simulate login process
-                setTimeout(() => {
+                // Prepare data for AJAX request
+                const data = `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+
+                sendAjaxRequest('/peace_logistix/auth/process_login.php', 'POST', data, function(response) {
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
-                    alert('Login functionality would be implemented here');
-                }, 2000);
+
+                    if (response.success) {
+                        // Redirect to dashboard on successful login
+                        window.location.href = '/peace_logistix/dashboard.php';
+                    } else {
+                        // Show error message
+                        alert(response.message || 'Login failed. Please try again.');
+                    }
+                });
             });
 
             // Google login
