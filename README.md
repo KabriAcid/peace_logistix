@@ -86,14 +86,90 @@ A web-based **Logistics Management System** built with **raw PHP (PDO)** to help
 
 ---
 
-## 🗄 5. Database Design (To be Defined)
+## 🗄 5. Database Design
 
-- `admins`
-- `shipments`
-- `deliveries`
-- `vehicles`
-- `notifications` *(optional)*
-- `activity_logs` *(optional)*
+### 5.1 Tables Overview
+
+| Table Name     | Purpose                                  |
+|---------------|-------------------------------------------|
+| `admins`      | Store admin users                         |
+| `shipments`   | Store shipment records                    |
+| `deliveries`  | Track deliveries linked to shipments      |
+| `vehicles`    | Store vehicle details                     |
+| `notifications` *(optional)* | Store alerts/notifications       |
+| `activity_logs` *(optional)* | Store admin activity history     |
+
+### 5.2 Tables Schema (Draft)
+
+#### `admins`
+```sql
+CREATE TABLE admins (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('super', 'admin') DEFAULT 'admin',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### `vehicles`
+```sql
+CREATE TABLE vehicles (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  vehicle_name VARCHAR(100) NOT NULL,
+  license_plate VARCHAR(50) NOT NULL,
+  status ENUM('available', 'assigned', 'maintenance') DEFAULT 'available',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### `shipments`
+```sql
+CREATE TABLE shipments (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  shipment_code VARCHAR(100) NOT NULL UNIQUE,
+  origin VARCHAR(255) NOT NULL,
+  destination VARCHAR(255) NOT NULL,
+  vehicle_id INT,
+  status ENUM('pending', 'in-transit', 'delivered', 'cancelled') DEFAULT 'pending',
+  created_by INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### `deliveries`
+```sql
+CREATE TABLE deliveries (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  shipment_id INT NOT NULL,
+  delivery_date DATE,
+  status ENUM('pending', 'in-progress', 'completed') DEFAULT 'pending',
+  notes TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### `notifications` *(Optional)*
+```sql
+CREATE TABLE notifications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  admin_id INT,
+  message TEXT NOT NULL,
+  is_read BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### `activity_logs` *(Optional)*
+```sql
+CREATE TABLE activity_logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  admin_id INT,
+  action VARCHAR(255),
+  ip_address VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
 
 ---
 
