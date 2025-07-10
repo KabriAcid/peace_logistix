@@ -106,8 +106,14 @@
             document.getElementById('loginForm').addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                // Validate input fields
+                if (!email || !password) {
+                    showToasted('Please fill in both email and password fields.', 'error');
+                    return;
+                }
 
                 // Add loading state
                 const submitBtn = this.querySelector('.custom-button');
@@ -118,16 +124,17 @@
                 // Prepare data for AJAX request
                 const data = `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
 
-                sendAjaxRequest('/peace_logistix/auth/process_login.php', 'POST', data, function(response) {
+                sendAjaxRequest('/peace_logistix/api/process_login.php', 'POST', data, function(response) {
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
 
                     if (response.success) {
-                        // Redirect to dashboard on successful login
-                        window.location.href = '/peace_logistix/dashboard.php';
+                        showToasted('Login successful! Redirecting...', 'success');
+                        setTimeout(() => {
+                            window.location.href = '/peace_logistix/admin/dashboard.php';
+                        }, 1500);
                     } else {
-                        // Show error message
-                        alert(response.message || 'Login failed. Please try again.');
+                        showToasted(response.message || 'Login failed. Please try again.', 'error');
                     }
                 });
             });
@@ -141,7 +148,7 @@
                 setTimeout(() => {
                     this.innerHTML = originalText;
                     this.disabled = false;
-                    alert('Google login functionality would be implemented here');
+                    showToasted('Google login functionality would be implemented here.', 'info');
                 }, 1500);
             });
 
