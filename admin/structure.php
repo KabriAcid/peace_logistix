@@ -1,4 +1,9 @@
-<?php require_once __DIR__ . "/../components/header.php"; ?>
+<?php
+require_once __DIR__ . "/../config/database.php";
+require_once __DIR__ . "/../config/auth.php";
+require_once __DIR__ . "/../helpers/util.php";
+require_once __DIR__ . "/../components/header.php";
+?>
 
 <body>
     <div class="dashboard">
@@ -9,7 +14,7 @@
             <?php require_once __DIR__ . "/../components/navbar.php"; ?>
             <!-- Dashboard Content -->
             <div class="dashboard-content">
-               <!-- Content goes here -->
+                <!-- Content goes here -->
             </div>
         </main>
     </div>

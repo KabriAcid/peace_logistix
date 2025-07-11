@@ -1,207 +1,170 @@
-<?php require_once __DIR__ . "/../components/header.php"; ?>
+<?php
+require_once __DIR__ . "/../config/database.php";
+require_once __DIR__ . "/../config/auth.php";
+require_once __DIR__ . "/../helpers/util.php";
+require_once __DIR__ . "/../components/header.php";
+
+$todayRevenue = getTodayRevenue($pdo);
+$totalTrucks = getTotalTrucks($pdo);
+$totalDrivers = getTotalDrivers($pdo);
+$undelivered = getUndeliveredReports($pdo);
+$recentReports = getRecentReports($pdo);
+?>
 
 <body>
     <div class="dashboard">
         <?php require_once __DIR__ . "/../components/sidebar.php"; ?>
-        <!-- Main Content -->
+
         <main class="main-content">
-            <!-- Header -->
             <?php require_once __DIR__ . "/../components/navbar.php"; ?>
-            <!-- Dashboard Content -->
+
             <div class="dashboard-content">
-                <!-- Metrics Cards -->
-                <div class="metrics-grid">
-                    <div class="metric-card">
-                        <div class="metric-icon purple">
-                            <i class="fas fa-file-text"></i>
-                        </div>
-                        <div class="metric-info">
-                            <span class="metric-title">Today's Revenue</span>
-                            <span class="metric-value">₦ 701,451.33</span>
+                <div class="row">
+                    <!-- Metrics Cards (Full Width) -->
+                    <div class="col-12 mb-3">
+                        <div>
+                            <!-- Your existing metric cards go here -->
+                            <div class="metrics-grid">
+                                <div class="metric-card">
+                                    <div class="metric-icon purple">
+                                        <i class="fas fa-file-text"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <span class="metric-title">Today's Revenue</span>
+                                        <span class="metric-value">₦ <?= $todayRevenue; ?></span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-icon blue">
+                                        <i class="fas fa-truck"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <span class="metric-title">Trucks</span>
+                                        <span class="metric-value"><?= $totalTrucks; ?></span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-icon blue">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <span class="metric-title">Drivers</span>
+                                        <span class="metric-value"><?= $totalDrivers; ?></span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-icon gray">
+                                        <i class="fas fa-box"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <span class="metric-title">Undelivered</span>
+                                        <span class="metric-value"><?= $undelivered; ?></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="metric-card">
-                        <div class="metric-icon blue">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <div class="metric-info">
-                            <span class="metric-title">Trucks</span>
-                            <span class="metric-value">51</span>
+                    <!-- Top Row: Recent Reports (2/3) + Deliveries Summary (1/3) -->
+                    <div class="col-lg-8 mb-3">
+                        <div class="chart-card h-100">
+                            <div class="chart-header d-flex justify-content-between align-items-center">
+                                <h3>Recent Reports</h3>
+                                <a href="reports.php" class="btn btn-sm btn-outline-primary">View All</a>
+                            </div>
+                            <div class="products-list">
+                                <?php if (!empty($recentReports)): ?>
+                                    <?php foreach ($recentReports as $report): ?>
+                                        <div class="product-item">
+                                            <div class="product-icon">
+                                                <i class="fas fa-truck"></i>
+                                            </div>
+                                            <div class="product-info">
+                                                <span class="product-name"><?= htmlspecialchars(getTruckNameById($pdo, $report['truck_id']) ?? 'Unknown Truck'); ?></span>
+                                                <span class="product-branch"><?= htmlspecialchars($report['destination'] ?? 'N/A'); ?></span>
+                                            </div>
+                                            <div class="product-details text-end">
+                                                <span class="product-price">₦ <?= number_format($report['goods_value'], 2); ?></span>
+                                                <span class="product-quantity small text-muted"><?= date('d M Y', strtotime($report['created_at'])); ?></span>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <p class="text-center text-muted">No recent reports available.</p>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="metric-card">
-                        <div class="metric-icon blue">
-                            <i class="fas fa-box"></i>
-                        </div>
-                        <div class="metric-info">
-                            <span class="metric-title">Drivers</span>
-                            <span class="metric-value">50</span>
+                    <div class="col-lg-4 mb-4">
+                        <div class="chart-card h-100">
+                            <div class="chart-header">
+                                <h3>Deliveries Summary</h3>
+                            </div>
+                            <div class="deliveries-content text-center">
+                                <div class="delivery-percentage mb-2">85%</div>
+                                <div class="delivery-stats">
+                                    <div class="stat-item">
+                                        <div class="stat-indicator bg-success"></div>
+                                        <span class="stat-label">On-time</span>
+                                        <span class="stat-value">85%</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-indicator bg-warning"></div>
+                                        <span class="stat-label">In Progress</span>
+                                        <span class="stat-value">10%</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-indicator bg-danger"></div>
+                                        <span class="stat-label">Delayed</span>
+                                        <span class="stat-value">5%</span>
+                                    </div>
+                                </div>
+                                <button class="download-btn mt-3">
+                                    <i class="fas fa-download"></i> Download Statistics
+                                </button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="metric-card">
-                        <div class="metric-icon gray">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <div class="metric-info">
-                            <span class="metric-title">Undelivered</span>
-                            <span class="metric-value">5</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Charts Row -->
-                <div class="charts-row">
-                    <!-- Weekly Shipments Chart -->
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <h3>Weekly Shipments Chart</h3>
-                            <div class="chart-filter">
-                                <span>This Week</span>
-                                <i class="fas fa-chevron-down"></i>
+                    <!-- Bottom Row: Recent Activity Logs (Full Width) -->
+                    <div class="col-12 mb-4">
+                        <div class="chart-card">
+                            <div class="chart-header d-flex justify-content-between align-items-center">
+                                <h3>Recent Activity Logs</h3>
+                                <a href="reports.php" class="btn btn-sm btn-outline-primary">View All</a>
                             </div>
-                        </div>
-                        <div class="chart-placeholder">
-                            <i class="fas fa-chart-bar"></i>
-                            <p>Chart functionality excluded</p>
-                        </div>
-                    </div>
-
-                    <!-- Deliveries -->
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <h3>Deliveries</h3>
-                        </div>
-                        <div class="deliveries-content">
-                            <div class="delivery-percentage">78%</div>
-                            <div class="delivery-stats">
-                                <div class="stat-item">
-                                    <div class="stat-indicator red"></div>
-                                    <span class="stat-label">Ontime</span>
-                                    <span class="stat-value">78%</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-indicator yellow"></div>
-                                    <span class="stat-label">In Progress</span>
-                                    <span class="stat-value">78%</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-indicator dark"></div>
-                                    <span class="stat-label">Delayed</span>
-                                    <span class="stat-value">78%</span>
-                                </div>
-                            </div>
-                            <button class="download-btn">
-                                <i class="fas fa-download"></i>
-                                Download Statistics
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom Row -->
-                <div class="bottom-row">
-                    <!-- Store Locations -->
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <h3>Store Locations</h3>
-                            <div class="chart-filter">
-                                <span>In Europe</span>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <div class="chart-placeholder">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>Map functionality excluded</p>
-                        </div>
-                    </div>
-
-                    <!-- Products In Stock -->
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <h3>Products In Stock</h3>
-                            <a href="#" class="view-all">View All</a>
-                        </div>
-                        <div class="products-list">
-                            <div class="product-item">
-                                <div class="product-icon">
-                                    <i class="fas fa-box"></i>
-                                </div>
-                                <div class="product-info">
-                                    <span class="product-name">Red velvet frostings</span>
-                                    <span class="product-branch">Abuja Branch</span>
-                                </div>
-                                <div class="product-details">
-                                    <span class="product-price">₦ 7,000</span>
-                                    <span class="product-quantity">x 5</span>
-                                </div>
-                            </div>
-
-                            <div class="product-item">
-                                <div class="product-icon">
-                                    <i class="fas fa-box"></i>
-                                </div>
-                                <div class="product-info">
-                                    <span class="product-name">Red velvet frostings</span>
-                                    <span class="product-branch">Abuja Branch</span>
-                                </div>
-                                <div class="product-details">
-                                    <span class="product-price">₦ 7,000</span>
-                                    <span class="product-quantity">x 5</span>
-                                </div>
-                            </div>
-
-                            <div class="product-item">
-                                <div class="product-icon">
-                                    <i class="fas fa-box"></i>
-                                </div>
-                                <div class="product-info">
-                                    <span class="product-name">Red velvet frostings</span>
-                                    <span class="product-branch">Abuja Branch</span>
-                                </div>
-                                <div class="product-details">
-                                    <span class="product-price">₦ 7,000</span>
-                                    <span class="product-quantity">x 5</span>
-                                </div>
-                            </div>
-
-                            <div class="product-item">
-                                <div class="product-icon">
-                                    <i class="fas fa-box"></i>
-                                </div>
-                                <div class="product-info">
-                                    <span class="product-name">Red velvet frostings</span>
-                                    <span class="product-branch">Abuja Branch</span>
-                                </div>
-                                <div class="product-details">
-                                    <span class="product-price">₦ 7,000</span>
-                                    <span class="product-quantity">x 5</span>
-                                </div>
-                            </div>
-
-                            <div class="product-item">
-                                <div class="product-icon">
-                                    <i class="fas fa-box"></i>
-                                </div>
-                                <div class="product-info">
-                                    <span class="product-name">Red velvet frostings</span>
-                                    <span class="product-branch">Abuja Branch</span>
-                                </div>
-                                <div class="product-details">
-                                    <span class="product-price">₦ 7,000</span>
-                                    <span class="product-quantity">x 5</span>
-                                </div>
+                            <div class="products-list">
+                                <?php if (!empty($recentReports)): ?>
+                                    <?php foreach ($recentReports as $report): ?>
+                                        <div class="product-item">
+                                            <div class="product-icon"><i class="fas fa-truck"></i></div>
+                                            <div class="product-info">
+                                                <span class="product-name"><?= htmlspecialchars(getTruckNameById($pdo, $report['truck_id']) ?? 'Unknown Truck'); ?></span>
+                                                <span class="product-branch"><?= htmlspecialchars($report['destination'] ?? 'N/A'); ?></span>
+                                            </div>
+                                            <div class="product-details text-end">
+                                                <span class="product-price">₦ <?= number_format($report['goods_value'], 2); ?></span>
+                                                <span class="product-quantity small text-muted"><?= date('d M Y', strtotime($report['created_at'])); ?></span>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <p class="text-center text-muted">No recent activity available.</p>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </main>
     </div>
 
-    <!-- Sidebar Overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <script src="../assets/js/sidebar.js"></script>
 </body>

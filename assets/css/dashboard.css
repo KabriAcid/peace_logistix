@@ -40,7 +40,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 2rem;
 }
 
 .metric-card {
@@ -396,7 +395,6 @@
 .sidebar {
   width: 256px;
   background: white;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   left: 0;
