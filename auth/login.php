@@ -17,7 +17,7 @@
             <!-- Logo/Brand -->
             <div class="brand-section">
                 <div class="brand-logo">
-                    <img src="../favicon.png" alt="favicon" class="favicon">
+                    <a href="../index.php"><img src="../favicon.png" alt="favicon" class="favicon"></a>
                 </div>
                 <h1 class="brand-title">Peace Logistix</h1>
                 <p class="brand-subtitle">Welcome back! Please sign in to your account</p>
@@ -29,7 +29,13 @@
                 <div class="form-group">
                     <label for="username" class="form-label">Username</label>
                     <div class="input-wrapper">
-                        <i class="fa fa-envelope input-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="input-icon">
+                            <title>mail-2</title>
+                            <g fill="#212121">
+                                <path d="m12,11.882l11-5.5v-.382c0-1.654-1.346-3-3-3H4c-1.654,0-3,1.346-3,3v.382l11,5.5Z" fill="#212121" stroke-width="0"></path>
+                                <path d="m12,14.118L1,8.618v9.382c0,1.654,1.346,3,3,3h16c1.654,0,3-1.346,3-3v-9.382l-11,5.5Z" stroke-width="0" fill="#212121"></path>
+                            </g>
+                        </svg>
                         <input
                             type="text"
                             id="username"
@@ -44,7 +50,13 @@
                 <div class="form-group">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-wrapper">
-                        <i class="fa fa-lock input-icon"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="input-icon">
+                            <title>lock-2</title>
+                            <g fill="#212121">
+                                <path d="m17,10h-2v-4c0-1.654-1.346-3-3-3s-3,1.346-3,3v4h-2v-4c0-2.757,2.243-5,5-5s5,2.243,5,5v4Z" fill="#212121" stroke-width="0"></path>
+                                <path d="m19,9H5c-1.654,0-3,1.346-3,3v8c0,1.654,1.346,3,3,3h14c1.654,0,3-1.346,3-3v-8c0-1.654-1.346-3-3-3Zm-6,7.722v2.278h-2v-2.278c-.595-.347-1-.985-1-1.722,0-1.103.897-2,2-2s2,.897,2,2c0,.737-.405,1.375-1,1.722Z" stroke-width="0" fill="#212121"></path>
+                            </g>
+                        </svg>
                         <input
                             type="password"
                             id="password"
@@ -113,7 +125,7 @@
                 if (!username || !password) {
                     showToasted('Please fill in both username and password fields.', 'error');
                     return;
-                }       
+                }
 
                 // Add loading state
                 const submitBtn = this.querySelector('.custom-button');

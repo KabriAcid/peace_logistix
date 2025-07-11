@@ -1,7 +1,28 @@
+:root {
+  --accent-color: #230b34;
+  --accent-light: #34495e;
+  --accent-dark: #2c2d5b;
+
+  --orange: #f67366;
+
+  --pink: #fff6df;
+  --simblue: #e8eeff;
+  --gray: #979797;
+  --round-1: 8px;
+
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --bg-light: #f8f9fa;
+  --bg-white: #ffffff;
+  --border-color: #e9ecef;
+
+  --shadow: 0 3px 30px rgba(44, 62, 80, 0.1);
+  --shadow-hover: 0 4px 20px rgba(44, 62, 80, 0.15);
+}
 /* Dashboard Content */
 .dashboard-content {
   flex: 1;
-  padding: 1.5rem;
+  padding: 1rem 0;
 }
 
 .dashboard-header {
@@ -9,8 +30,9 @@
   box-shadow: var(--shadow);
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 1rem;
   z-index: 1000;
+  border-radius: 12px;
 }
 
 /* Metrics Grid */
@@ -23,10 +45,12 @@
 
 .metric-card {
   background: white;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
 }
 
 .metric-icon {
@@ -36,7 +60,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
 }
 
 .metric-icon.purple {
@@ -67,12 +90,14 @@
 .metric-title {
   font-size: 0.875rem;
   color: #64748b;
+  text-align: right;
 }
 
 .metric-value {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #1e293b;
+  color: var(--accent-color);
+  text-align: right;
 }
 
 /* Charts Row */
@@ -87,8 +112,7 @@
   background: white;
   border-radius: 0.5rem;
   padding: 1.5rem;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
 }
 
 .chart-header {
@@ -361,12 +385,6 @@
   }
 }
 
-@media (min-width: 1280px) {
-  .dashboard-content {
-    padding: 2rem;
-  }
-}
-
 /* Dashboard Layout */
 .dashboard {
   display: flex;
@@ -383,8 +401,7 @@
   top: 0;
   left: 0;
   height: 100vh;
-  z-index: 50;
-  transform: translateX(-100%);
+  z-index: 1050;
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -440,8 +457,8 @@
 }
 
 .nav-item.active {
-  background-color: #2563eb;
-  color: white;
+  background-color: var(--accent-color);
+  color: #fff!important;
 }
 
 .nav-item i {
@@ -453,9 +470,12 @@
 /* Main Content */
 .main-content {
   flex: 1;
-  margin-left: 0;
+  margin-left: 250px;
   display: flex;
   flex-direction: column;
+  padding: 1rem 1.5rem;
+  min-height: 100vh;
+  background-color: #f8fafc;
 }
 
 /* Header */

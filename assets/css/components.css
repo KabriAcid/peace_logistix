@@ -1,3 +1,4 @@
+
 /* BUTTONS */
 .button {
   padding: 12px 25px;
@@ -94,16 +95,7 @@
   font-size: 12px;
   color: var(--gray);
 }
-.input-field {
-  padding: 20px;
-  border-radius: var(--round-1);
-  border: 1px solid var(--gray);
-  font-weight: 400;
-  background: #fff;
-}
-.input-field:focus {
-    outline: none;
-}
+
 ::placeholder {
     margin-right: 20px;
 }

@@ -37,33 +37,15 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="header-text">Quick & Reliable <span class="highlight"></span><br><span class="highlight">Logistics</span> Solution.</h1>
+                    <h1 class="header-text">Welcome to Peace <span class="highlight">Transport</span> & <span class="highlight">Logistics</span><br> Services.</h1>
                     <p class="hero-description">Fast and reliable logistics service for any supply chain needs with a focus on technology and service excellence for you.</p>
                     <div class="hero-buttons">
-                        <button class="button custom-button">Get Quote</button>
+                        <button class="button custom-button">Get Started</button>
                     </div>
                 </div>
                 <div class="hero-image">
                     <img src="https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Delivery team illustration" />
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quote Form Section -->
-    <section class="quote-form-section">
-        <div class="container">
-            <div class="quote-form">
-                <div class="form-group">
-                    <input type="text" placeholder="From" class="form-input">
-                </div>
-                <div class="form-group">
-                    <input type="text" placeholder="To where" class="form-input">
-                </div>
-                <div class="form-group">
-                    <input type="text" placeholder="Weight" class="form-input">
-                </div>
-                <button class="button custom-button">Check Now</button>
             </div>
         </div>
     </section>
