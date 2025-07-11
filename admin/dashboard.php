@@ -1,11 +1,11 @@
-<?php require_once __DIR__ . "../components/header.php"; ?>
+<?php require_once __DIR__ . "/../components/header.php"; ?>
 <body>
     <div class="dashboard">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
-                    <span class="logo-ship">Ship</span><span class="logo-up">Up</span><span class="logo-ng">.ng</span>
+                    <img src="../favicon.png" alt="">
                 </div>
                 <button class="close-sidebar" id="closeSidebar">
                     <i class="fas fa-times"></i>
@@ -39,8 +39,8 @@
         <!-- Main Content -->
         <main class="main-content">
             <!-- Header -->
-            <header class="header">
-                <div class="header-left">
+            <header class="dashboard-header">
+                <div class="dashboard-header-left">
                     <button class="menu-toggle" id="menuToggle">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -48,7 +48,7 @@
                     <h1>Dashboard</h1>
                 </div>
                 
-                <div class="header-right">
+                <div class="dashboard-header-right">
                     <div class="search-container">
                         <i class="fas fa-search"></i>
                         <input type="text" placeholder="Search by Sales, products, attendants, branch...">

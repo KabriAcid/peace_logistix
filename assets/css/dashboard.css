@@ -4,6 +4,15 @@
   padding: 1.5rem;
 }
 
+.dashboard-header {
+  background: var(--bg-white);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
 /* Metrics Grid */
 .metrics-grid {
   display: grid;

@@ -497,20 +497,7 @@ span {
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.logo-ship {
-  color: #1e293b;
-}
-
-.logo-up {
-  color: #f97316;
-}
-
-.logo-ng {
-  color: #1e293b;
+    padding: 1rem;
 }
 
 .close-sidebar {
@@ -567,7 +554,7 @@ span {
 
 /* Header */
 
-.header-left {
+.dashboard-header-left {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -582,17 +569,17 @@ span {
   padding: 0.25rem;
 }
 
-.header-left i {
+.dashboard-header-left i {
   color: #94a3b8;
 }
 
-.header-left h1 {
+.dashboard-header-left h1 {
   font-size: 1.125rem;
   font-weight: 600;
   color: #1e293b;
 }
 
-.header-right {
+.dashboard-header-right {
   display: flex;
   align-items: center;
   gap: 1rem;
