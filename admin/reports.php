@@ -17,18 +17,18 @@ require_once __DIR__ . '/../components/header.php';
                     <h2 class="fs-4 fw-bold mb-0">Daily Reports</h2>
                 </div>
 
-                <form id="addReportForm" class="p-3 border rounded bg-white">
+                <form id="addReportForm" class="p-3 rounded bg-white">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label fw-bold">Truck</label>
-                            <select name="truck_id" class="form-select" required>
+                            <select name="truck_id" class="form-input" required>
                                 <option value="">Select Truck</option>
                                 <!-- Populate from DB -->
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-bold">Driver</label>
-                            <select name="driver_id" class="form-select" required>
+                            <select name="driver_id" class="form-input" required>
                                 <option value="">Select Driver</option>
                                 <!-- Populate from DB -->
                             </select>
@@ -38,20 +38,20 @@ require_once __DIR__ . '/../components/header.php';
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label fw-bold">Destination</label>
-                            <input type="text" name="destination" class="form-control" required>
+                            <input type="text" name="destination" class="form-input" required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-bold">Goods Value (₦)</label>
-                            <input type="number" name="goods_value" class="form-control" required>
+                            <input type="number" name="goods_value" class="form-input" required>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label fw-bold">Remarks / Summary</label>
-                        <textarea name="remarks" class="form-control" rows="3"></textarea>
+                        <textarea name="remarks" class="form-input" rows="3"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit Report</button>
+                    <button type="submit" class="button custom-button">Submit Report</button>
                 </form>
             </div>
         </main>

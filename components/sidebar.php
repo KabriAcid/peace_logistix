@@ -6,6 +6,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <div class="sidebar-header">
         <div class="logo">
             <img src="../favicon.png" alt="" class="favicon">
+            <span class="fw-bold">Peace Logistix</span>
         </div>
         <button class="close-sidebar" id="closeSidebar">
             <i class="fa fa-times"></i>

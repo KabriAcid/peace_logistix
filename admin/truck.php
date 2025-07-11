@@ -80,18 +80,18 @@ $trucks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Truck Name</label>
-                                <input type="text" name="truck_name" class="form-control" required>
+                                <input type="text" name="truck_name" class="form-input" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">License Plate</label>
-                                <input type="text" name="license_plate" class="form-control" required>
+                                <input type="text" name="license_plate" class="form-input" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Status</label>
-                                <select name="status" class="form-select" required>
+                                <select name="status" class="form-input" required>
                                     <option value="available">Available</option>
                                     <option value="assigned">Assigned</option>
                                     <option value="maintenance">Maintenance</option>
@@ -100,9 +100,9 @@ $trucks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Add Truck</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="button outline-button" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="button custom-button">Add Truck</button>
                     </div>
 
                 </form>
@@ -126,18 +126,18 @@ $trucks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Truck Name</label>
-                                <input type="text" name="truck_name" id="edit_truck_name" class="form-control" required>
+                                <input type="text" name="truck_name" id="edit_truck_name" class="form-input" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">License Plate</label>
-                                <input type="text" name="license_plate" id="edit_license_plate" class="form-control" required>
+                                <input type="text" name="license_plate" id="edit_license_plate" class="form-input" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Status</label>
-                                <select name="status" id="edit_status" class="form-select" required>
+                                <select name="status" id="edit_status" class="form-input" required>
                                     <option value="available">Available</option>
                                     <option value="assigned">Assigned</option>
                                     <option value="maintenance">Maintenance</option>
@@ -146,9 +146,9 @@ $trucks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Update Truck</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="button outline-button" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="button custom-button">Update Truck</button>
                     </div>
 
                 </form>
@@ -237,7 +237,7 @@ $trucks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         loadTrucks();
     </script>
     <!-- bootstrap CDN -->
-     <script src=""></script>
+    <script src=""></script>
 </body>
 
 </html>

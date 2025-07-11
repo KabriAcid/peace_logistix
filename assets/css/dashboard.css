@@ -412,8 +412,7 @@
 .sidebar-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
+  justify-content: center;
   border-bottom: 1px solid #e2e8f0;
 }
 

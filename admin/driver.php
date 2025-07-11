@@ -82,22 +82,22 @@ $drivers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Driver Name</label>
-                                <input type="text" name="driver_name" class="form-control" required>
+                                <input type="text" name="driver_name" class="form-input" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Phone</label>
-                                <input type="text" name="phone" class="form-control" required>
+                                <input type="text" name="phone" class="form-input" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">License Number</label>
-                                <input type="text" name="license_number" class="form-control" required>
+                                <input type="text" name="license_number" class="form-input" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Status</label>
-                                <select name="status" class="form-select" required>
+                                <select name="status" class="form-input" required>
                                     <option value="active">Active</option>
                                     <option value="inactive">Inactive</option>
                                 </select>
@@ -105,9 +105,9 @@ $drivers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Add Driver</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="button outline-button" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="button custom-button">Add Driver</button>
                     </div>
 
                 </form>
@@ -131,22 +131,22 @@ $drivers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Driver Name</label>
-                                <input type="text" name="driver_name" id="edit_driver_name" class="form-control" required>
+                                <input type="text" name="driver_name" id="edit_driver_name" class="form-input" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Phone</label>
-                                <input type="text" name="phone" id="edit_phone" class="form-control" required>
+                                <input type="text" name="phone" id="edit_phone" class="form-input" required>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">License Number</label>
-                                <input type="text" name="license_number" id="edit_license_number" class="form-control" required>
+                                <input type="text" name="license_number" id="edit_license_number" class="form-input" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label fw-bold">Status</label>
-                                <select name="status" id="edit_status" class="form-select" required>
+                                <select name="status" id="edit_status" class="form-input" required>
                                     <option value="active">Active</option>
                                     <option value="inactive">Inactive</option>
                                 </select>
@@ -154,9 +154,9 @@ $drivers = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Update Driver</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button type="button" class="button outline-button" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="button custom-button">Update Driver</button>
                     </div>
 
                 </form>
