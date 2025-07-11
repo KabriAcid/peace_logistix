@@ -157,6 +157,7 @@ $trucks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <script src="../assets/js/script.js"></script>
     <script src="../assets/js/sidebar.js"></script>
 
     <script>

@@ -22,9 +22,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <i class="fa fa-file-text"></i>
             <span>Reports</span>
         </a>
-        <a href="../admin/shipments.php" class="nav-item <?= ($current_page == 'shipments.php') ? 'active' : ''; ?>">
-            <i class="fa fa-box"></i>
-            <span>Shipments</span>
         </a>
         <a href="../admin/truck.php" class="nav-item <?= ($current_page == 'truck.php') ? 'active' : ''; ?>">
             <i class="fa fa-truck"></i>

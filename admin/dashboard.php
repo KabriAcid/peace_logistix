@@ -68,12 +68,11 @@ $recentReports = getRecentReports($pdo);
                         </div>
                     </div>
 
-                    <!-- Top Row: Recent Reports (2/3) + Deliveries Summary (1/3) -->
                     <div class="col-lg-8 mb-3">
                         <div class="chart-card h-100">
                             <div class="chart-header d-flex justify-content-between align-items-center">
                                 <h3>Recent Reports</h3>
-                                <a href="reports.php" class="btn btn-sm btn-outline-primary">View All</a>
+                                <a href="reports.php" class="button outline-button px-3 py-1 btn-sm">View All</a>
                             </div>
                             <div class="products-list">
                                 <?php if (!empty($recentReports)): ?>
@@ -135,7 +134,7 @@ $recentReports = getRecentReports($pdo);
                         <div class="chart-card">
                             <div class="chart-header d-flex justify-content-between align-items-center">
                                 <h3>Recent Activity Logs</h3>
-                                <a href="reports.php" class="btn btn-sm btn-outline-primary">View All</a>
+                                <a href="reports.php" class="button outline-button px-3 py-1 btn-sm">View All</a>
                             </div>
                             <div class="products-list">
                                 <?php if (!empty($recentReports)): ?>
@@ -166,6 +165,7 @@ $recentReports = getRecentReports($pdo);
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <script src="../assets/js/script.js"></script>
     <script src="../assets/js/sidebar.js"></script>
 </body>
 

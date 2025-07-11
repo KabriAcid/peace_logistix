@@ -58,6 +58,7 @@ require_once __DIR__ . '/../components/header.php';
     </div>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <script src="../assets/js/script.js"></script>
     <script src="../assets/js/sidebar.js"></script>
     <script>
         document.getElementById('addReportForm').addEventListener('submit', function(e) {

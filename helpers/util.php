@@ -63,8 +63,23 @@ function getTruckNameById(PDO $pdo, int $truckId): ?string
 // Helper function to get driver name by ID
 function getDriverNameById(PDO $pdo, int $driverId): ?string
 {
-    $stmt = $pdo->prepare("SELECT driver_name FROM drivers WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT first_name FROM drivers WHERE id = ?");
     $stmt->execute([$driverId]);
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result['driver_name'] ?? null;
+    return $result['first_name'] ?? null;
+}
+
+function getUserSettings(PDO $pdo, int $userId): array
+{
+    $stmt = $pdo->prepare("SELECT * FROM user_settings WHERE user_id = ?");
+    $stmt->execute([$userId]);
+    $settings = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Provide default values if no settings found
+    return [
+        'biometrics_enabled'      => isset($settings['biometrics_enabled']) ? (bool)$settings['biometrics_enabled'] : false,
+        'hide_balance'    => isset($settings['hide_balance']) ? (bool)$settings['hide_balance'] : false,
+        'session_expiry'  => isset($settings['session_expiry']) ? (bool)$settings['session_expiry'] : true,
+        'dark_mode'  => isset($settings['dark_mode']) ? (bool)$settings['dark_mode'] : true,
+    ];
 }

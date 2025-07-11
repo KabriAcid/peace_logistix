@@ -3,7 +3,6 @@
         <button class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
         </button>
-        <i class="fas fa-chevron-left"></i>
         <h1>Dashboard</h1>
     </div>
 
@@ -13,7 +12,7 @@
             <input type="text" placeholder="Search by Sales, products, attendants, branch...">
         </div>
 
-        <div class="notification">
+        <div class="notification position-relative">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <title>alarm</title>
                 <g fill="#212121" stroke-linejoin="miter" stroke-linecap="butt">
@@ -24,13 +23,21 @@
             <span class="notification-badge">1</span>
         </div>
 
-        <div class="user-profile">
+        <div class="user-profile position-relative" id="userProfile">
             <img src="../assets/img/avatar.jpg" alt="User">
             <div class="user-info">
                 <span class="user-name">Tiger Shroff</span>
                 <span class="user-id">ID: 1234567</span>
             </div>
             <i class="fas fa-chevron-down"></i>
+
+            <!-- Dropdown -->
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="profile.php"><i class="fas fa-user me-2"></i> Profile</a>
+                <a href="settings.php"><i class="fas fa-cog me-2"></i> Settings</a>
+                <div class="dropdown-divider"></div>
+                <a href="logout.php" class="text-danger"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+            </div>
         </div>
     </div>
 </header>
