@@ -25,17 +25,17 @@
 
             <!-- Login Form -->
             <form class="login-form" id="loginForm">
-                <!-- Email Field -->
+                <!-- username Field -->
                 <div class="form-group">
-                    <label for="email" class="form-label">Email Address</label>
+                    <label for="username" class="form-label">Username</label>
                     <div class="input-wrapper">
                         <i class="fa fa-envelope input-icon"></i>
                         <input
-                            type="email"
-                            id="email"
-                            name="email"
+                            type="text"
+                            id="username"
+                            name="username"
                             class="form-input"
-                            placeholder="Enter your email"
+                            placeholder="Enter your username"
                             required>
                     </div>
                 </div>
@@ -106,14 +106,14 @@
             document.getElementById('loginForm').addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                const email = document.getElementById('email').value.trim();
+                const username = document.getElementById('username').value.trim();
                 const password = document.getElementById('password').value.trim();
 
                 // Validate input fields
-                if (!email || !password) {
-                    showToasted('Please fill in both email and password fields.', 'error');
+                if (!username || !password) {
+                    showToasted('Please fill in both username and password fields.', 'error');
                     return;
-                }
+                }       
 
                 // Add loading state
                 const submitBtn = this.querySelector('.custom-button');
@@ -122,7 +122,7 @@
                 submitBtn.disabled = true;
 
                 // Prepare data for AJAX request
-                const data = `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+                const data = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
 
                 sendAjaxRequest('/peace_logistix/api/process_login.php', 'POST', data, function(response) {
                     submitBtn.innerHTML = originalText;

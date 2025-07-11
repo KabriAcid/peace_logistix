@@ -74,7 +74,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .6rem 20px;
+  padding: 0.6rem 20px;
 }
 
 .nav-brand h2 {
@@ -127,8 +127,12 @@ span {
   color: var(--text-dark);
 }
 
-.highlight {
+.header-text {
   color: var(--accent-color);
+}
+
+.highlight {
+  color: var(--orange);
 }
 
 .hero-description {
@@ -157,6 +161,7 @@ span {
   background: var(--bg-white);
   margin-top: -40px;
   position: relative;
+  min-width: 1000px;
   z-index: 10;
 }
 

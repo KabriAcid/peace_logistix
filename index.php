@@ -37,7 +37,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Quick & Reliable <span class="highlight">Logistix</span><br>and <span class="highlight">Logistics</span> Solution.</h1>
+                    <h1 class="header-text">Quick & Reliable <span class="highlight"></span><br><span class="highlight">Logistics</span> Solution.</h1>
                     <p class="hero-description">Fast and reliable logistics service for any supply chain needs with a focus on technology and service excellence for you.</p>
                     <div class="hero-buttons">
                         <button class="button custom-button">Get Quote</button>
